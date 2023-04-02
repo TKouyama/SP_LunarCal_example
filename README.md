@@ -26,7 +26,7 @@ please cite below papers in your documents and/or papers:
 ---
 Structure of parameter files:
 
-In https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/
+In https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/
 
 - 'avg_cube_1000s-7000s_selected_ip110225.img' :: Binary data, Double-precision float
 SP model cube data (lon, lat, wavelength)
@@ -43,11 +43,12 @@ i.e. (lon, lat, wavelength) = (720, 360, 160)
   ;; (0.25, -89.25), (0.75, -89.25), ... (359.75,-89.25)
   ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole
 
+In this repository:
+
 - 'albedo_group_05x05.dat' :: Binary data, 2byte Integer
  (lon, lat) = (720, 360)
 Albedo group map (this file is made by Kouyama based on Yokota's definition in Yokota et al 2011)
 Note; Latitude direction may be opposit to the SP model definition, sorry..
-
 
 - 'High_albedo_sel.txt'
 - 'Mid_albedo_sel.txt'
