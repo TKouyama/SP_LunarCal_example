@@ -26,6 +26,8 @@ please cite below papers in your documents and/or papers:
 ---
 Structure of parameter files:
 
+In https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/
+
 - 'avg_cube_1000s-7000s_selected_ip110225.img' :: Binary data, Double-precision float
 SP model cube data (lon, lat, wavelength)
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
