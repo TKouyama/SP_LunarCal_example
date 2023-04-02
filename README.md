@@ -33,7 +33,7 @@ SP model cube data (lon, lat, wavelength)
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
 i.e. (lon, lat, wavelength) = (720, 360, 160)
 
-  ;; Note: Definition of SP map coordinate  (Lon, Lat)
+  ;; Note: Definition of SP map coordinate  (Lon, Lat)  
   ;; (0.25, 89.75), (0.75, 89.75), ... (359.75,89.75) ;; North pole  
   ;; (0.25, 89.25), (0.75, 89.25), ... (359.75,89.25)  
   ;; ...  
