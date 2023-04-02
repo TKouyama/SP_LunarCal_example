@@ -24,7 +24,7 @@ please cite below papers in your documents and/or papers:
 - Kouyama et al., 2016: Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors, Planet. Space Sci., 124, 76-83
 
 ---
-Structure of parameter files:
+Please prepare below parameter files:
 
 In https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/
 
