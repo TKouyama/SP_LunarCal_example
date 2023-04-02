@@ -34,26 +34,26 @@ SP model cube data (lon, lat, wavelength)
 i.e. (lon, lat, wavelength) = (720, 360, 160)
 
   ;; Note: Definition of SP map coordinate  (Lon, Lat)
-  ;; (0.25, 89.75), (0.75, 89.75), ... (359.75,89.75) ;; North pole
-  ;; (0.25, 89.25), (0.75, 89.25), ... (359.75,89.25)
-  ;; ...
-  ;; (0.25, 0.25), (0.75, 0.25), ... (359.75,0.25)
-  ;; (0.25, -0.25), (0.75, -0.25), ... (359.75,-0.25)
-  ;; ...
-  ;; (0.25, -89.25), (0.75, -89.25), ... (359.75,-89.25)
-  ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole
+  ;; (0.25, 89.75), (0.75, 89.75), ... (359.75,89.75) ;; North pole  
+  ;; (0.25, 89.25), (0.75, 89.25), ... (359.75,89.25)  
+  ;; ...  
+  ;; (0.25, 0.25), (0.75, 0.25), ... (359.75,0.25)  
+  ;; (0.25, -0.25), (0.75, -0.25), ... (359.75,-0.25)  
+  ;; ...  
+  ;; (0.25, -89.25), (0.75, -89.25), ... (359.75,-89.25)  
+  ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole  
 
 In this repository:
 
 - 'albedo_group_05x05.dat' :: Binary data, 2byte Integer
- (lon, lat) = (720, 360)
-Albedo group map (this file is made by Kouyama based on Yokota's definition in Yokota et al 2011)
-Note; Latitude direction may be opposit to the SP model definition, sorry..
+ (lon, lat) = (720, 360)  
+Albedo group map (this file is made by Kouyama based on Yokota's definition in Yokota et al 2011)  
+Note; Latitude direction (north to south) may be opposit to the SP model definition, sorry..  
 
-- 'High_albedo_sel.txt'
-- 'Mid_albedo_sel.txt'
-- 'Low_albedo_sel.txt'
-ASCII files. Parameters of i, e, alpha dependence for each albedo group.
+- 'High_albedo_sel.txt'  
+- 'Mid_albedo_sel.txt'  
+- 'Low_albedo_sel.txt'  
+ASCII files. Parameters of i, e, alpha dependence for each albedo group.  
 
 
 - 'Gueymard.txt' :: ASCII file
