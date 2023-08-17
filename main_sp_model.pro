@@ -23,8 +23,8 @@ pro main_SP_model
   ;;
   ;; Directory names for input parameter files and output
   ;;
-  datadir = './Parameters/'
-  outdir = './Outputs/'
+  datadir = './parameters/'
+  outdir = './outputs/'
 
   ;;
   ;; provide observation geometry
@@ -39,10 +39,17 @@ pro main_SP_model
   ;; Moon - Observer distance
   LO_distance = mean_MD
 
-  sub_solar_lon_deg = -5.98037
+  ;; simulation condition example 1
+  ;sub_solar_lon_deg = -5.98037
+  ;sub_solar_lat_deg = 0d
+  ;sub_sc_lon_deg = -12.0
+  ;sub_sc_lat_deg = -8.0
+
+  ;; simulation condition example 2
+  sub_solar_lon_deg = 24d
   sub_solar_lat_deg = 0d
-  sub_sc_lon_deg = -12.0
-  sub_sc_lat_deg = -8.0
+  sub_sc_lon_deg = -6.0
+  sub_sc_lat_deg = 0d
 
   ;; Phase angle ;;
   tmp_obs = [cos(sub_sc_lat_deg*!dpi/180.)*cos(sub_sc_lon_deg*!dpi/180.) $
@@ -97,7 +104,7 @@ pro main_SP_model
   ;; output disk resolved simulation image (hyper) with tiff format
   ;; note:: output file size ~ 800 MB / cube
   ;;
-  ofname_tiff = outdir+'Simulation_image_hyper.tiff'
+  ofname_tiff = outdir+'simulation_image_hyper.tiff'
   ;; out_hyper_image = (X, Y, Channel)
   write_tiff,ofname_tiff,out_hyper_image,/double
 
