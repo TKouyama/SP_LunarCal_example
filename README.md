@@ -28,20 +28,19 @@ ASCII files. Parameters of i, e, alpha dependence for each albedo group.
 - 'Gueymard.txt' :: ASCII file
 Solar irradiance data from Gueymard model which is used in generating SP model
 
-**Run main program**
-
+**Compile and Run main program**
+- main_sp_model.pro
 
 ---
 Core program:
 - read_sp_model_bilinear_for_pub.pro
-
-Please replace below path in the code with your directory name where SP files are contained.
-(e.g. L36. ifldname ='./')
+- lunar_map_plot.pro
 
 All required functions are contained in this repository.
 (But if you find missed function(s), please inform me)
 
-- 'avg_cube_1000s-7000s_selected_ip110225.img'
+- Structure of 'avg_cube_1000s-7000s_selected_ip110225.img'
+
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
 i.e. (lon, lat, wavelength) = (720, 360, 160)
 
@@ -56,9 +55,8 @@ i.e. (lon, lat, wavelength) = (720, 360, 160)
   ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole  
 
 ---
-If you use this code for your research purpose,
-please cite below papers in your documents and/or papers:
 
+Citations:
 - Yokota et al., 2011: Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215, 639-660
 
 - Ogohara et al., 2012: Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data, Icarus, 217, 661-668
@@ -66,5 +64,4 @@ please cite below papers in your documents and/or papers:
 - Kouyama et al., 2016: Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors, Planet. Space Sci., 124, 76-83
 
 ---
-Toru Kouyama, 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16
-contact: t.kouyama@aist.go.jp
+Toru Kouyama (AIST), 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16
