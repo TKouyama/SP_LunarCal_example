@@ -4,6 +4,8 @@ This is an official implementation of a paper "Development of an application sch
 
 ![Sample_Image 1](outputs/simulation_image_hyper_ql.jpg)
 
+<img src="outputs/simulation_image_hyper_ql.jpg" width="320px">
+
 ---
 
 Usage:
