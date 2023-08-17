@@ -1,25 +1,27 @@
 ;;
 ;; 観測時間を指定して,その時に見えるはずの月画像をSP月反射率モデルに基づき作成する
-;; channel_wavelength.pro
-;; get_radiance_lism.pro
-;; get_geometry_with_spice.pro
-;; band_response.pro
-;; lunar_map_plot.pro
-;; channel_contrib.pro
 ;;
-;; !! read_tle.proを動かしてTLEからSPKを作っておく !!
+
 ;;
+;; Required IDL codes
+;;
+@channel_wavelength.pro
+@get_radiance_lism.pro
+;@get_geometry_with_spice.pro
+@band_response.pro
+@lunar_map_plot.pro
+@channel_contrib.pro
+@f_get_radiance_integ.pro
+@band_response.pro
 
 ;; センサーの仕様やSPICEカーネルなどを記述したファイルを用意しておく
 ;; <使い方>
-;; read_sp_model_bilinear,input_fname='inputf_ASTER.txt'
-;;
-;; Keywords: GORSAT2_RA, Date, out_irad, and out_wav are for GORSAT2 research
-;; see estimate_SP_brignthess_for_CAI2.pro
+;; read_sp_model_bilinear,,obs_geo, out_irad, out_wav, ofldname = ofldname
 ;;
 
+
 pro read_sp_model_bilinear_for_pub $
-    ,obs_geo, out_irad, out_wav, ofldname = ofldname
+    ,obs_geo, out_irad, out_wav, out_hyper_image = out_hyper_image, ofldname = ofldname
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Geometry情報を更新したいとき ;;
@@ -76,22 +78,22 @@ pro read_sp_model_bilinear_for_pub $
   overplot_latlon = 0
 
   ;; work_dirにいるようにしておく ;;
-  work_dir = 'C:\work\ENVI_IDL\LunarCal_WG\Default\'
-  cd,work_dir
+  ;work_dir = 'C:\work\ENVI_IDL\LunarCal_pub\'
+  ;cd,work_dir
 
   ;; workディレクトリ名を取得 ;;
   cd,'.',current=current_dir
 
   ;; 各種必要なディレクトリ名＋ファイル名 ;;
   ;; Dataを収めたディレクトリ ;;
-  datadir ='./Data/'
+  datadir ='./Parameters/'
   ;; Sol radiacne data ;;
   solfname = datadir+'Gueymard.txt'
 
   ;; Output ディレクトリ ;;
   if n_elements(ofldname) eq 0 then begin
     ;ofldname =base_dir+'Products\'
-    ofldname ='./out_dir/'
+    ofldname ='./Outputs/'
   endif
 
   ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -181,8 +183,8 @@ pro read_sp_model_bilinear_for_pub $
   wset,0
   if sol_rad_mode eq 'OBS' then begin
     ;; Based on an observation on 2004/04/24 ;;
-    sol_rad=channel_radiance()/SL_distance_au^2.*1000./!dpi ; W/m2/um/str
-    plot,wav,sol_rad,title="Solar radiance"
+    ;sol_rad=channel_radiance()/SL_distance_au^2.*1000./!dpi ; W/m2/um/str
+    ;plot,wav,sol_rad,title="Solar radiance"
   endif else if sol_rad_mode eq 'LISM' then begin
     ;; Based on Lism standard, Gueymard 2004;;
     get_radiance_lism,sol_rad,solfname=solfname,/test
@@ -412,218 +414,6 @@ pro read_sp_model_bilinear_for_pub $
   out_irad = total_rad_correct*scaling_factor
   out_wav = wav
 
-  return
-
-  ;; ここから測器ごとに変更 ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; Bandごとにまとめる for ASTER ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;inst_name = 'ASTER'
-  ;inst_name = 'ASTER_BACK'
-
-  ;; Band毎の相対波長感度特性を考慮 ;;
-
-
-  ;
-  print,"Use ASTER SRF: "
-  band_name = ['band1' $
-    ,'band2' $
-    ,'band3N' ]
-  band_count = n_elements(band_name)
-
-  wav1_n = channel_contrib("band1",wav,wav1,con1)
-  wav2_n = channel_contrib("band2",wav,wav2,con2)
-  wav3N_n = channel_contrib("band3N",wav,wav3N,con3N)
-
-  con1 = interpol(con1, wav1, wav)
-  con2 = interpol(con2, wav2, wav)
-  con3N = interpol(con3N, wav3N, wav)
-
-  con_siz = size(con1)
-  con_arr = dblarr(band_count,con_siz[1])
-  con_arr[0,*] = con1
-  con_arr[1,*] = con2
-  con_arr[2,*] = con3N
-
-  wav3B_n = channel_contrib("band3B",wav,wav3B,con3B)
-
-  ;;
-  wav_n_arr = intarr(band_count,160l)
-  for i=0, band_count-1, 1 do begin
-    wav_n_arr[i,*] = indgen(160l)
-  endfor
-
-  ;;
-  wav_arr = dblarr(band_count, 160l)
-  for i=0, band_count-1, 1 do begin
-    wav_arr[i,*] = wav
-  endfor
-
-  ;; fitsのルールに合わせて
-  ccd_rad_band_arr = dblarr( pix_number[0],pix_number[1], band_count)
-  ccd_rad_band_con_arr = dblarr(band_count)
-  ccd_rad_band_eff_arr = dblarr(band_count)
-  sol_rad_band_arr = dblarr(band_count)
-
-  for band_i=0, band_count-1, 1 do begin
-    print, band_i
-    band_siz = size(reform(wav_n_arr[band_i,*]))
-
-    for bi=0, band_siz[1]-1,1 do begin
-      i = wav_n_arr[band_i, bi]
-      sol_rad_band_arr[band_i] += sol_rad[i]*con_arr[band_i, bi]
-
-      ccd_rad_band_arr[*,*,band_i] += ccd_rad[*,*,i]*con_arr[band_i, bi]
-      ccd_rad_band_con_arr[band_i] += con_arr[band_i, bi]
-      ccd_rad_band_eff_arr[band_i] += wav[i]*con_arr[band_i, bi]
-    endfor
-    ccd_rad_band_arr[*,*,band_i] /= ccd_rad_band_con_arr[band_i]
-    ccd_rad_band_eff_arr[band_i] /= ccd_rad_band_con_arr[band_i]
-
-  endfor
-
-  ;; 明らかな特異点は0にする
-  irregular_pos = where(ccd_rad_band_arr gt 500d)
-  ccd_rad_band_arr[irregular_pos] = 0d
-
-
-  print,"Band_n, Total contribution, Effciency, Efficient wavelength"
-  for band_i=0, band_count-1, 1 do begin
-    print,band_i, total(con_arr[band_i,*]), ccd_rad_band_con_arr[band_i], ccd_rad_band_eff_arr[band_i]
-  endfor
-
-  print,"Total brightness, Mean dayside brightness, Mean dayside reflectance: "
-  mean_pos = where(ccd_rad_band_arr[*,*,0] gt 0)
-  for band_i=0, band_count-1, 1 do begin
-    tmp_ccd_rad = ccd_rad_band_arr[*,*,band_i]
-    print, band_i, total(ccd_rad_band_arr[*,*,band_i])*scaling_factor  $
-      , mean(tmp_ccd_rad[mean_pos]) $
-      , mean(tmp_ccd_rad[mean_pos]) / sol_rad_band_arr[band_i]
-  endfor
-  ;stop
-
-  ;; プレビュー ;;
-  wset,0
-  loadct,0,/silent
-
-  if overplot_latlon eq 0 then begin
-
-    ;; 出力するバンドを指定 ;;
-    output_band = reform(ccd_rad_band_arr[*,*,0])
-
-    if integ_zoom_ratio gt 1 then begin
-      im_siz = size(output_band)
-      tmp_output = rebin(output_band,im_siz[1]/integ_zoom_ratio,im_siz[2]/integ_zoom_ratio)
-      c_output = congrid(tmp_output,!d.x_size,!d.y_size,/center)
-    endif else begin
-      c_output = congrid(output_band,!d.x_size,!d.y_size,/center)  ; ,/interp)
-    endelse
-
-    ;c_output[0,0]=120 ;; 満月近いとき ;;
-    ;c_output[0,0]=100 ;; Hayabusa2 ;;
-
-    ;c_output[0,0]=80 ;; ASTER Band 1;;
-    ;c_output[0,0]=80 ;; ASTER Band 2;;
-    ;c_output[0,0]=50
-    c_output[0,0]=max(c_output) < 120
-
-    tvscl,c_output < c_output[0,0]
-    ;xyouts,50,600,Date,/device,color=255,charsize=1.5
-    xyouts,50,570,"PA = "+strtrim(string(float(tmp_phase_angle)),2),/device,color=255,charsize=1.5
-    print,"Max brightness", max(output_band)
-
-    ;; Histogram ;;
-    result = histogram(output_band,binsiz=1,max=150,min=0)
-    result_x = dindgen(151)+0.5
-    device,decomposed=0
-    !p.background = 255
-    !p.color = 0
-    !p.position = [0.05,0.15,0.95,0.95]
-    window,3,xs=600,ys=400
-    wset,3
-    erase
-    result[0]=0
-    plot,result_x,result,psym=10,xs=1,xrange=[0,150],ytickname=replicate(' ',10)
-    wset,0
-    ;stop
-  endif else if overplot_latlon eq 1 then begin
-
-    ;; 画像表示枠準備 ;;
-    output_band = ccd_rad_band_arr[*,*,0]
-    ;output_band = ccd_rad[*,*,40]
-    contour,output_band ,/nodata,xstyle=5,ystyle=5
-    px = !x.window*!d.x_vsize
-    py = !y.window*!d.y_vsize
-    sx = px(1)-px(0)+1
-    sy = py(1)-py(0)+1
-    ;; 枠に合わせて画像出力 ;;
-    c_output = congrid(bytscl(output_band <100,top=!D.table_size),sx,sy,/interp)
-    tvscl,c_output,px[0],py[0]
-
-    ;;;;;;;;;;;;;;;;;;;;;;;;
-    ;; Lat Lon 線を重ねる ;;
-    ;;;;;;;;;;;;;;;;;;;;;;;;
-    subTS_plot_ex,obs_geo.ssl_latitude,obs_geo.ssl_longitude $
-      ,obs_geo.ssc_latitude,obs_geo.ssc_longitude $
-      ,obs_geo.N_azimuth,ang_diam_deg,dtheta $
-      ,ccd_geo,pix_x=pix_number[0],pix_y=pix_number[1] $
-      ,cx=cx,cy=cy,/reverse_x,/reverse_y $
-      ,/line_only,/noerase,line_color=196
-  endif
-
-  ;;;;;;;;;;;;;;;
-  ;; File 出力 ;;
-  ;;;;;;;;;;;;;;;
-  output = ccd_rad_band_arr
-  output_geo = ccd_geo
-
-  ;; 鏡像化するとき、ONCに合わせるよう? ;;
-  ;output = reverse(ccd_rad_band,1)
-  ;output_geo = reverse(ccd_geo,1)
-
-  ;; rebin ;;
-  im_siz = size(reform(output[*,*,0]))
-  output = rebin(output, im_siz[1]/integ_zoom_ratio,im_siz[2]/integ_zoom_ratio, band_count)
-
-  if inst_name eq 'ASTER' then begin
-
-    ;ofname_date = strmid(Date,0,4)+strmid(Date,5,2)+strmid(Date,8,2) $
-    ;         +'T'+strmid(Date,11,2)+strmid(Date,14,2)+strmid(Date,17,2)
-
-    ofname_date = 'yyyymmddThhmmss'
-    
-    ;ofname = ofldname+'MODEL_rad_band_all_sim_free.fits'
-    ofname = ofldname+'MODEL_rad_band_all_'+ofname_date+'.fits'
-    ofname_geo = ofldname+'MODEL_rad_geo_band_all_'+ofname_date+'.fits'
-    print,"Output: ",ofname
-
-    writefits,ofname,float(output)
-    writefits,ofname_geo,float(output_geo)
-
-    ofname_fits = ofldname+'MODEL_rad_'+ofname_date+'_'+band_name+'.fits'
-    for band_i=0, band_count-1, 1 do begin
-      print,"Output: ",ofname_fits[band_i]
-      writefits,ofname_fits[band_i],float(reform(output[*,*,band_i]))
-
-    endfor
-
-    ;; for envi
-    ;ofname = ofldname+'MODEL_rad_band123N.img'
-    ;envi_write_envi_file,float(output), out_name=ofname,wl=[0.556, 0.661, 0.807] $
-    ;                    ,/no_open ;; Memoryには入れない  print,max(lun_rad)
-  endif else if 'ASTER_BACK' then begin
-    ;; 3B用
-    writefits,ofldname+'MODEL_rad_band3B_sim_free.fits',float(output)
-    writefits,ofldname+'MODEL_rad_geo_band3B_sim_free.fits',float(output_geo)
-
-    ;; for envi
-    ;    ofname = ofldname+'MODEL_rad_band3B.img'
-    ;    envi_write_envi_file,float(output), out_name=ofname,wl=[0.807] $
-    ;                      ,/no_open ;; Memoryには入れない  print,max(lun_rad)
-  endif
-
-  ;print,"Observation date: ", Date
-  print,"==="
 
   return
 end
