@@ -6,7 +6,7 @@ This is an official implementation of a paper "Development of an application sch
 ---
 
 Usage:
-Please prepare/confirm below parameter files:
+1. Prepare/confirm below parameter files:
 
 - SP model (hyerspecral data cube)
 From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/
@@ -41,6 +41,7 @@ ASCII files. Parameters of i, e, alpha dependence for each albedo group.
 - 'Gueymard.txt' :: ASCII file
 Solar irradiance data from Gueymard model which is used in generating SP model
 
+2. Run main program
 
 
 ---
