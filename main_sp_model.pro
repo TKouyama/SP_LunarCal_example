@@ -21,7 +21,7 @@
 ;;
 pro main_SP_model
   ;;
-  ;; Directory names for input parameter files and output
+  ;; Directory names for input parameter files and outputs
   ;;
   datadir = './parameters/'
   outdir = './outputs/'
@@ -40,15 +40,15 @@ pro main_SP_model
   LO_distance = mean_MD
 
   ;; simulation condition example 1
-  ;sub_solar_lon_deg = -5.98037
+  ;sub_solar_lon_deg = -5.98037d
   ;sub_solar_lat_deg = 0d
-  ;sub_sc_lon_deg = -12.0
-  ;sub_sc_lat_deg = -8.0
+  ;sub_sc_lon_deg = -12.0d
+  ;sub_sc_lat_deg = -8.0d
 
   ;; simulation condition example 2
   sub_solar_lon_deg = 24d
   sub_solar_lat_deg = 0d
-  sub_sc_lon_deg = -6.0
+  sub_sc_lon_deg = -6.0d
   sub_sc_lat_deg = 0d
 
   ;; Phase angle ;;
@@ -64,7 +64,7 @@ pro main_SP_model
   ;stop
 
   ;; direction from Moon center to North pole in the image frame ;;
-  NA_deg = -90;; General case
+  NA_deg = -90d ;; General case
 
   ;; Belows are always 0 for lunar calibration case ;;
   phi_deg = 0d
@@ -87,6 +87,7 @@ pro main_SP_model
     ,lam_deg $
     ,phase_angle_deg $
     )
+
 
   ;;
   ;; Run simulation
@@ -114,9 +115,20 @@ pro main_SP_model
   ;;   >  DOUBLE    = Array[800, 800, 160]
 
   ;;
+  ;; output observation settings
+  ;;
+  ofname_struct = outdir+file_basename(ofname_tiff,'.tiff') + '_setting.txt'
+  help,obs_geo,/structure,output=str_obs_geo
+  openw,1,ofname_struct
+  for i=0, n_elements(str_obs_geo)-1, 1 do begin
+    printf,1,str_obs_geo[i]    
+  endfor
+  close,1
+
+  ;;
   ;; QL file
   ;; 
-  ofname_jpeg = outdir+'ql_'+file_basename(ofname_tiff,'.tiff') + '.jpg'
+  ofname_jpeg = outdir+file_basename(ofname_tiff,'.tiff') + '_ql.jpg'
   tmp_image = out_hyper_image[*,*,40]
   byte_tmp_image = byte( tmp_image / (max(tmp_image) < 120) * 255d)
   write_jpeg,ofname_jpeg, byte_tmp_image
