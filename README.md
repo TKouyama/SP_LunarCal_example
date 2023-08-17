@@ -1,6 +1,8 @@
 # SP_LunarCal_example
 
-This is an official implementation of a paper "Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors", Kouyama et al., 2016, PSS.
+This is an official implementation of a paper "Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors", Kouyama et al., 2016, PSS, for simulating a Moon observation with a 2D imaging sensor from a specific location.
+
+---
 
 Example code to read SP map model.
 
@@ -65,5 +67,5 @@ Solar irradiance data from Gueymard model which is used in generating SP model
 
 ---
 
-Toru Kouyama, 2019.04.29, modified 2020.10.12, 11.16
+Toru Kouyama, 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16
 contact: t.kouyama@aist.go.jp
