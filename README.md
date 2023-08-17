@@ -32,14 +32,10 @@ Solar irradiance data from Gueymard model which is used in generating SP model
 **Compile and Run main program**
 - main_sp_model.pro
 
----
-Core program:
-- read_sp_model_bilinear_for_pub.pro
-- lunar_map_plot.pro
-
 All required functions are contained in this repository.
 (But if you find missed function(s), please inform me)
 
+---
 
 Structure of 'avg_cube_1000s-7000s_selected_ip110225.img':
 
