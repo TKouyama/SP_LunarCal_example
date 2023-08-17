@@ -2,15 +2,6 @@
 
 This is an official implementation of a paper "Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors", Kouyama et al., 2016, PSS, for simulating a Moon observation with a 2D imaging sensor from a specific location.
 
----
-Core program:
-- read_sp_model_bilinear_for_pub.pro
-
-Please replace below path in the code with your directory name where SP files are contained.
-(e.g. L36. ifldname ='./')
-
-All required functions are contained in this repository.
-(But if you find missed function(s), please inform me)
 
 ---
 
@@ -61,6 +52,16 @@ please cite below papers in your documents and/or papers:
 - Ogohara et al., 2012: Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data, Icarus, 217, 661-668
 
 - Kouyama et al., 2016: Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors, Planet. Space Sci., 124, 76-83
+
+---
+Core program:
+- read_sp_model_bilinear_for_pub.pro
+
+Please replace below path in the code with your directory name where SP files are contained.
+(e.g. L36. ifldname ='./')
+
+All required functions are contained in this repository.
+(But if you find missed function(s), please inform me)
 
 ---
 Toru Kouyama, 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16
