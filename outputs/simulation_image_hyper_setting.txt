@@ -1,0 +1,11 @@
+** Structure <540693f0>, 10 tags, length=80, data length=80, refs=1:
+   ST_DISTANCE     DOUBLE       1.4959787e+08
+   TO_DISTANCE     DOUBLE           384400.00
+   SSL_LONGITUDE   DOUBLE           24.000000
+   SSL_LATITUDE    DOUBLE           0.0000000
+   SSC_LONGITUDE   DOUBLE          -6.0000000
+   SSC_LATITUDE    DOUBLE           0.0000000
+   N_AZIMUTH       DOUBLE          -90.000000
+   PHI             DOUBLE           0.0000000
+   LAM             DOUBLE           0.0000000
+   PHASE           DOUBLE           30.000000
