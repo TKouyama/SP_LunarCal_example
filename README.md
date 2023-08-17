@@ -39,7 +39,8 @@ Core program:
 All required functions are contained in this repository.
 (But if you find missed function(s), please inform me)
 
-- Structure of 'avg_cube_1000s-7000s_selected_ip110225.img'
+
+Structure of 'avg_cube_1000s-7000s_selected_ip110225.img':
 
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
 i.e. (lon, lat, wavelength) = (720, 360, 160)
