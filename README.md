@@ -2,8 +2,6 @@
 
 This is an official implementation of a paper "Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors", Kouyama et al., 2016, PSS, for simulating a Moon observation with a 2D imaging sensor from a specific location.
 
-![Sample_Image 1](outputs/simulation_image_hyper_ql.jpg)
-
 <img src="outputs/simulation_image_hyper_ql.jpg" width="320px">
 
 ---
