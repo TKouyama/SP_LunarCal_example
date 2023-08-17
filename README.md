@@ -1,4 +1,7 @@
 # SP_LunarCal_example
+
+This is an official implementation of a paper "Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors", Kouyama et al., 2016, PSS.
+
 Example code to read SP map model.
 
 - example_of_read_sp_model.pro
