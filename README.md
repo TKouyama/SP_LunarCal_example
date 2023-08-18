@@ -15,7 +15,7 @@ From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2
 - 'avg_cube_1000s-7000s_selected_ip110225.img' :: Binary data, Double-precision float, cube data (lon, lat, wavelength)
 
 
-In this repository (in "parameter" directory):
+In this repository (in "parameters" directory):
 
 - 'albedo_group_05x05.dat' :: Binary data, 2byte Integer (lon, lat) = (720, 360)  
 Albedo group map (this file is made by Kouyama based on Yokota's definition in Yokota et al 2011)  
