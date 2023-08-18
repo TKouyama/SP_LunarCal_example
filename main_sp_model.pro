@@ -1,5 +1,5 @@
 ;;
-;; test program for SP model simulation test
+;; test program for SP model simulation
 ;; Toru Kouyama (AIST)
 ;; t.kouyama@aist.go.jp
 ;;
