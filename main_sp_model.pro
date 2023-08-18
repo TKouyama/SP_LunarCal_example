@@ -64,7 +64,8 @@ pro main_SP_model
   ;stop
 
   ;;
-  ;; North pole direction from Moon center in the image frame ;;
+  ;; NA_deg means North-pole Azimuthal angle,
+  ;; meaning the angle between X direction and North pole direction from Moon center in the image frame.
   ;; -90 deg results North Pole is up.
   ;; 0 deg results North Pole direction is X direction
   ;;
