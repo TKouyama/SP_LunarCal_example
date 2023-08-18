@@ -63,7 +63,11 @@ pro main_SP_model
   print,"Phase angle: ",phase_angle_deg
   ;stop
 
-  ;; direction from Moon center to North pole in the image frame ;;
+  ;;
+  ;; North pole direction from Moon center in the image frame ;;
+  ;; -90 deg results North Pole is up.
+  ;; 0 deg results North Pole direction is X direction
+  ;;
   NA_deg = -90d ;; General case
 
   ;; Belows are always 0 for lunar calibration case ;;
