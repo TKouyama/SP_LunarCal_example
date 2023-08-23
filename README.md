@@ -14,7 +14,7 @@ Usage:
 
 **Prepare/confirm below parameter files**
 
-From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/, download SP model core (hyerspecral data cube).
+From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/, download SP model core (hyerspectral data cube).
 
 - 'avg_cube_1000s-7000s_selected_ip110225.img' :: Binary data, Double-precision float, cube data (lon, lat, wavelength)
 
