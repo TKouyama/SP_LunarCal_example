@@ -1,5 +1,4 @@
-# SP_LunarCal_example
-Example code to read SP map model.
+Some example codes to read SP map model.
 
 - example_of_read_sp_model.pro
 
