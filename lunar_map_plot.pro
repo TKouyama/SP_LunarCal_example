@@ -853,24 +853,24 @@ pro lunar_map_plot,obs_geo,ccd_ref $
     wset,0
   endif
 
-  ;; 各種ジオメトリ用
-  wset,1
-  erase
-  xs = !D.x_size
-  ys = !D.y_size
-  tvscl,congrid(map_phase,ys*2./3.,ys/3.)
-  tvscl,congrid(map_emi,ys*2./3.,ys/3.),0,ys/3.
-  tvscl,congrid(map_inc,ys*2./3.,ys/3.),0,ys*2./3.
+  ;; 各種ジオメトリQL用
+  ;wset,1
+  ;erase
+  ;xs = !D.x_size
+  ;ys = !D.y_size
+  ;tvscl,congrid(map_phase,ys*2./3.,ys/3.)
+  ;tvscl,congrid(map_emi,ys*2./3.,ys/3.),0,ys/3.
+  ;tvscl,congrid(map_inc,ys*2./3.,ys/3.),0,ys*2./3.
 
-  wset,2
-  erase
+  ;wset,2
+  ;erase
   ;loadct,0,/silent
-  xs = !D.x_size
-  ys = !D.y_size
-  tvscl,congrid(map_sp_ref[*,*,40]<0.2,ys*2./3.,ys/3.)
-  tvscl,congrid(map_albedo_g,ys*2./3.,ys/3.),0,ys/3.
-  tvscl,congrid(map_sp_ref_out[*,*,pu_l]<0.25,ys*2./3.,ys/3.),0,ys/3.*2
-  wset,0
+  ;xs = !D.x_size
+  ;ys = !D.y_size
+  ;tvscl,congrid(map_sp_ref[*,*,40]<0.2,ys*2./3.,ys/3.)
+  ;tvscl,congrid(map_albedo_g,ys*2./3.,ys/3.),0,ys/3.
+  ;tvscl,congrid(map_sp_ref_out[*,*,pu_l]<0.25,ys*2./3.,ys/3.),0,ys/3.*2
+  ;wset,0
 
   ;;;;;;;;;;;;
   ;; 論文用 ;;
