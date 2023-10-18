@@ -12,7 +12,7 @@ for simulating a Moon observation by a 2D imaging sensor from a specific observe
 
 Usage:
 
-**Prepare/confirm below parameter files**
+**- Prepare/confirm below parameter files**
 
 From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/, download SP model core (hyerspectral data cube).
 
@@ -33,7 +33,7 @@ ASCII files. Parameters of i, e, alpha dependence for each albedo group.
 - 'Gueymard.txt' :: ASCII file
 Solar irradiance data from Gueymard model which is used in generating SP model
 
-**Compile and Run main program**
+**- Compile and Run main program**
 - main_sp_model.pro
 
 All required functions are contained in this repository.
