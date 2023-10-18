@@ -103,7 +103,7 @@ pro main_SP_model
   ;;
   ;; output disk integrated irradiance ;;
   ;;
-  ofname_csv = outdir+'sample_correct.csv'
+  ofname_csv = outdir+'Lunar_irradiance.csv'
   write_csv,ofname_csv,out_wav,out_irad ,header = ['Wavelength','Lunar irradiance']
 
   ;;
