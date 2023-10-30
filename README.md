@@ -10,6 +10,16 @@ for simulating a Moon observation by a 2D imaging sensor from a specific observe
 
 ---
 
+**GDL run example**
+
+$ gdl
+
+GDL> gdl .compile main_sp_model.pro
+
+GDL> main_sp_model
+
+---
+
 Usage:
 
 **- Prepare/confirm below parameter files**
