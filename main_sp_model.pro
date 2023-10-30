@@ -103,39 +103,81 @@ pro main_SP_model
   ;;
   ;; output disk integrated irradiance ;;
   ;;
+  ;ofname_csv = outdir+'Lunar_irradiance.csv'
+  ;write_csv,ofname_csv,out_wav,out_irad ,header = ['Wavelength','Lunar irradiance']
+
+  ;; for GDL interface
   ofname_csv = outdir+'Lunar_irradiance.csv'
-  write_csv,ofname_csv,out_wav,out_irad ,header = ['Wavelength','Lunar irradiance']
+  openw,1,ofname_csv
+  printf,1,'Wavelength, Lunar_irradiance'
+
+  for i=0, 160-1, 1 do begin
+     tmp_l = string(double(out_wav[i]))+','+string(double(out_irad[i]))
+     print,tmp_l
+     printf,1,tmp_l
+  endfor
+  close,1
 
   ;;
-  ;; output disk resolved simulation image (hyper) with tiff format
+  ;; output disk resolved simulation image (hyper) with tiff or binary format
+  ;; out_hyper_image = (X, Y, Channel)
   ;; note:: output file size ~ 800 MB / cube
   ;;
-  ofname_tiff = outdir+'simulation_image_hyper.tiff'
-  ;; out_hyper_image = (X, Y, Channel)
-  write_tiff,ofname_tiff,out_hyper_image,/double
+
+  ofname_base = 'simuliation_image_hyper'
+  
+  ;;
+  ;; for IDL interface
+  ;;
+
+  ;ofname_tiff = outdir+ofname_base+'.tiff'
+  ;write_tiff,ofname_tiff,out_hyper_image,/double
 
   ;; this tiff can be read as ::
   ;;   Moon_sim_image = read_tiff(file_name)
   ;;   help, Moon_sim_image
   ;;   >  DOUBLE    = Array[800, 800, 160]
+  
+  ;;
+  ;; for GDL interface
+  ;;
+  ofname_bin = outdir+ofname_base+'.bin'
+  openw,1,ofname_bin
+  writeu,1,out_hyper_image
+  close,1
+
+  ;; this binary file can be opened with, for example, ImageJ via reading "Raw file"
+  ;; 64-bit real, 800 x 800 size, 160 images, and Little endian
 
   ;;
   ;; output observation settings
   ;;
-  ofname_struct = outdir+file_basename(ofname_tiff,'.tiff') + '_setting.txt'
+  ofname_struct = outdir+ ofname_base + '_setting.txt'
   help,obs_geo,/structure,output=str_obs_geo
   openw,1,ofname_struct
+
+  out_size = size(out_hyper_image)
+  printf,1,"Output binary file information: "
+  printf,1,'64 bits/pix, Little Endian '
+  printf,1,"Data size (X, Y, Channel)"
+  printf,1,"X  "+string(out_size[1])
+  printf,1,"Y  "+string(out_size[2])
+  printf,1,"Channel  "+string(out_size[3])
+
+  printf,1,""
   for i=0, n_elements(str_obs_geo)-1, 1 do begin
     printf,1,str_obs_geo[i]    
   endfor
+
+  
   close,1
 
   ;;
   ;; QL file
   ;; 
-  ofname_jpeg = outdir+file_basename(ofname_tiff,'.tiff') + '_ql.jpg'
+  ofname_jpeg = outdir+ ofname_base + '_ql.jpg'
   tmp_image = out_hyper_image[*,*,40]
-  byte_tmp_image = byte( tmp_image / (max(tmp_image) < 120) * 255d)
+  byte_tmp_image = byte( tmp_image / (max(tmp_image) < 110) * 255d)
   write_jpeg,ofname_jpeg, byte_tmp_image
 
   return
