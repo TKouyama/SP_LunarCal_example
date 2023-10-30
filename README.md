@@ -22,12 +22,15 @@ GDL> main_sp_model
 
 Usage:
 
-**- Prepare/confirm below parameter files**
+**- Prepare the SP model core file**
 
 From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/, download SP model core (hyerspectral data cube).
 
 - 'avg_cube_1000s-7000s_selected_ip110225.img' :: Binary data, Double-precision float, cube data (lon, lat, wavelength)
 
+Then copy this file to "parameters" directory.
+
+**- Comfirm paramtere files in this repository**
 
 In this repository (in "parameters" directory):
 
