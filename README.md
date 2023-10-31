@@ -4,7 +4,7 @@ This is an official implementation (IDL) of a paper:
 
 "[Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors](https://www.sciencedirect.com/science/article/pii/S0032063315301008)", Kouyama et al., 2016, PSS
 
-for simulating a Moon observation by a 2D imaging sensor from a specific observer position with SP model, which can be used for Lunar calibration for the sensor.
+for simulating a Moon observation by a 2D imaging sensor from a specific observer position with SP model, which is one of disk-resolved Lunar brightness model and can be used for Lunar calibration for a sensor.
 
 <img src="outputs/simulation_image_hyper_ql.jpg" width="320px">
 
