@@ -8,9 +8,8 @@ for simulating a Moon observation by a 2D imaging sensor from a specific observe
 
 <img src="outputs/simulation_image_hyper_ql.jpg" width="320px">
 
----
 
-**GDL run example**
+# GDL run example
 
 $ gdl
 
@@ -18,9 +17,8 @@ GDL> .compile main_sp_model.pro
 
 GDL> main_sp_model
 
----
 
-Usage:
+# Usage:
 
 **- Prepare the SP model core file**
 
@@ -69,14 +67,12 @@ i.e. (lon, lat, wavelength) = (720, 360, 160)
   ;; (0.25, -89.25), (0.75, -89.25), ... (359.75,-89.25)  
   ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole  
 
----
-
-Citations:
+# Citations:
 - Yokota et al., 2011: Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215, 639-660
 
 - Ogohara et al., 2012: Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data, Icarus, 217, 661-668
 
 - Kouyama et al., 2016: Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors, Planet. Space Sci., 124, 76-83
 
----
+# Contact
 Toru Kouyama (AIST), 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16
