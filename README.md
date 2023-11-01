@@ -20,7 +20,7 @@ GDL> main_sp_model
 
 # Usage:
 
-**- Prepare the SP model core file**
+**Download the SP model core file**
 
 From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/, download SP model core (hyerspectral data cube).
 
@@ -28,7 +28,7 @@ From https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2
 
 Then copy this file to "parameters" directory.
 
-**- Comfirm paramtere files in this repository**
+**Comfirm paramtere files in this repository**
 
 In this repository (in "parameters" directory):
 
@@ -44,10 +44,12 @@ ASCII files. Parameters of i, e, alpha dependence for each albedo group.
 - 'Gueymard.txt' :: ASCII file
 Solar irradiance data from Gueymard model which is used in generating SP model
 
-**- Compile and Run main program**
-- main_sp_model.pro
+**Compile and Run main program**
+In IDL/GDL CUI
+$> .compile main_sp_model.pro
+$> main_sp_model
 
-All required functions are contained in this repository.
+All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
 
 ---
