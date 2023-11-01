@@ -45,6 +45,7 @@ ASCII files. Parameters of i, e, alpha dependence for each albedo group.
 Solar irradiance data from Gueymard model which is used in generating SP model
 
 **Compile and Run main program**
+
 In IDL/GDL CUI
 $> .compile main_sp_model.pro
 $> main_sp_model
