@@ -47,8 +47,10 @@ Solar irradiance data from Gueymard model which is used in generating SP model
 **Compile and Run main program**
 
 In IDL/GDL CUI
-$> .compile main_sp_model.pro
-$> main_sp_model
+
+IDL> .compile main_sp_model.pro
+
+IDL> main_sp_model
 
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
