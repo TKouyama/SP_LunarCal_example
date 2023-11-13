@@ -6,7 +6,7 @@ This is an official implementation (IDL) of a paper:
 
 for simulating a Moon observation by a 2D imaging sensor from a specific observer position with SP model, which is one of disk-resolved Lunar brightness model and can be used for Lunar calibration for a sensor.
 
-<img src="outputs/simulation_image_hyper_ql.jpg" width="320px">
+<img src="outputs/simulation_image_hyper_ql.jpg" width="320px"> <img src="outputs/simulation_image_hyper_ql_example2.jpg" width="320px">
 
 
 # GDL run example
