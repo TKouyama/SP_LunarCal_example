@@ -109,7 +109,7 @@ pro main_SP_model
   ;; for GDL interface
   ofname_csv = outdir+'Lunar_irradiance.csv'
   openw,1,ofname_csv
-  printf,1,'Wavelength, Lunar_irradiance'
+  printf,1,'Wavelength, Lunar_irradiance (W/m2/um)'
 
   for i=0, 160-1, 1 do begin
      tmp_l = string(double(out_wav[i]))+','+string(double(out_irad[i]))
@@ -124,7 +124,7 @@ pro main_SP_model
   ;; note:: output file size ~ 800 MB / cube
   ;;
 
-  ofname_base = 'simuliation_image_hyper'
+  ofname_base = 'simulation_image_hyper'
   
   ;;
   ;; for IDL interface
