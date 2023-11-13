@@ -55,9 +55,9 @@ IDL> main_sp_model
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
 
----
+# Misc:
 
-Structure of 'avg_cube_1000s-7000s_selected_ip110225.img':
+**Structure of 'avg_cube_1000s-7000s_selected_ip110225.img'**
 
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
 i.e. (lon, lat, wavelength) = (720, 360, 160)
@@ -71,6 +71,13 @@ i.e. (lon, lat, wavelength) = (720, 360, 160)
   ;; ...  
   ;; (0.25, -89.25), (0.75, -89.25), ... (359.75,-89.25)  
   ;; (0.25, -89.75), (0.75, -89.75), ... (359.75,-89.75) ;; South pole  
+
+
+**Installing GDL**
+
+(Ubuntu) $> sudo apt install gnudatalanguage
+
+https://github.com/gnudatalanguage/gdl
 
 # Citations:
 - Yokota et al., 2011: Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215, 639-660
