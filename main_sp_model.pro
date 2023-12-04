@@ -40,25 +40,25 @@ pro main_SP_model
   LO_distance = mean_MD
 
   ;; simulation condition example 1
-  ;sub_solar_lon_deg = -5.98037d
-  ;sub_solar_lat_deg = 0d
-  ;sub_sc_lon_deg = -12.0d
-  ;sub_sc_lat_deg = -8.0d
+  ;sub_solar_lon_deg_Moon = -5.98037d
+  ;sub_solar_lat_deg_Moon = 0d
+  ;sub_sc_lon_deg_Moon = -12.0d
+  ;sub_sc_lat_deg_Moon = -8.0d
 
   ;; simulation condition example 2
-  sub_solar_lon_deg = 24d
-  sub_solar_lat_deg = 0d
-  sub_sc_lon_deg = -6.0d
-  sub_sc_lat_deg = 0d
+  sub_solar_lon_deg_Moon = 24d
+  sub_solar_lat_deg_Moon = 0d
+  sub_sc_lon_deg_Moon = -6.0d
+  sub_sc_lat_deg_Moon = 0d
 
   ;; Phase angle ;;
-  tmp_obs = [cos(sub_sc_lat_deg*!dpi/180.)*cos(sub_sc_lon_deg*!dpi/180.) $
-            ,cos(sub_sc_lat_deg*!dpi/180.)*sin(sub_sc_lon_deg*!dpi/180.) $
-            ,sin(sub_sc_lat_deg*!dpi/180.)]
+  tmp_obs = [cos(sub_sc_lat_deg_Moon*!dpi/180.)*cos(sub_sc_lon_deg_Moon*!dpi/180.) $
+            ,cos(sub_sc_lat_deg_Moon*!dpi/180.)*sin(sub_sc_lon_deg_Moon*!dpi/180.) $
+            ,sin(sub_sc_lat_deg_Moon*!dpi/180.)]
 
-  tmp_sol = [cos(sub_solar_lat_deg*!dpi/180.)*cos(sub_solar_lon_deg*!dpi/180.) $
-            ,cos(sub_solar_lat_deg*!dpi/180.)*sin(sub_solar_lon_deg*!dpi/180.) $
-            ,sin(sub_solar_lat_deg*!dpi/180.)]
+  tmp_sol = [cos(sub_solar_lat_deg_Moon*!dpi/180.)*cos(sub_solar_lon_deg_Moon*!dpi/180.) $
+            ,cos(sub_solar_lat_deg_Moon*!dpi/180.)*sin(sub_solar_lon_deg_Moon*!dpi/180.) $
+            ,sin(sub_solar_lat_deg_Moon*!dpi/180.)]
   phase_angle_deg = acos(total(tmp_obs*tmp_sol))*180./!dpi
   print,"Phase angle: ",phase_angle_deg
   ;stop
@@ -83,10 +83,10 @@ pro main_SP_model
   obs_geo = create_struct(tags $
     ,SL_distance $
     ,LO_distance $
-    ,sub_solar_lon_deg $
-    ,sub_solar_lat_deg $
-    ,sub_sc_lon_deg $
-    ,sub_sc_lat_deg $
+    ,sub_solar_lon_deg_Moon $
+    ,sub_solar_lat_deg_Moon $
+    ,sub_sc_lon_deg_Moon $
+    ,sub_sc_lat_deg_Moon $
     ,NA_deg $
     ,phi_deg $
     ,lam_deg $
