@@ -113,7 +113,7 @@ pro main_SP_model
 
   for i=0, 160-1, 1 do begin
      tmp_l = string(double(out_wav[i]))+','+string(double(out_irad[i]))
-     print,tmp_l
+     ;;print,tmp_l ;; for debug
      printf,1,tmp_l
   endfor
   close,1
