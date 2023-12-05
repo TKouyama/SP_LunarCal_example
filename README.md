@@ -55,6 +55,12 @@ IDL> main_sp_model
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
 
+**Outputs**
+
+- Hyperspectral Image cube (bin = raw binary)
+- Lunar irradiance spectrum (csv)
+- Calculation setting (txt)
+
 # Misc:
 
 **Structure of 'avg_cube_1000s-7000s_selected_ip110225.img'**
