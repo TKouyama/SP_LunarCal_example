@@ -9,15 +9,6 @@ for simulating a Moon observation by a 2D imaging sensor from a specific observe
 <img src="outputs/simulation_image_hyper_ql_example1.jpg" width="320px"> <img src="outputs/simulation_image_hyper_ql_example2.jpg" width="320px">
 
 
-# GDL run example
-
-$ gdl
-
-GDL> .compile main_sp_model.pro
-
-GDL> main_sp_model
-
-
 # Usage:
 
 **Download the SP model core file**
@@ -60,6 +51,14 @@ All required functions are contained in this repository, and will be compiled au
 - Hyperspectral Image cube (bin = raw binary)
 - Lunar irradiance spectrum (csv)
 - Calculation setting (txt)
+
+# GDL run example
+
+$ gdl
+
+GDL> .compile main_sp_model.pro
+
+GDL> main_sp_model
 
 # Misc:
 
