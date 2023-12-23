@@ -34,7 +34,7 @@ pro example_of_read_SP_model
   ;;;;;;;;;;;;;;;;;;;;;;
   ;; Please replace below path with your directory name where SP files are contained.
   ;ifldname ='C:/work/ENVI_IDL/sample/SP_model_example/'
-  ifldname = './params/'
+  ifldname = '../parameters/'
   ofldname = './'
 
   ;; SP map data with 0.5x0.5 grid interval (double precision, idl data_type=5) ;;
