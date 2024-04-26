@@ -1,4 +1,4 @@
-# Lunar calibration with SP model (Disk-resolved model)
+# Lunar calibration with SP model (Disk-resolved model), expand to 2050 nm
 
 This is an official implementation (IDL) of a paper:
 
@@ -27,9 +27,9 @@ In this repository (in "parameters" directory):
 Albedo group map (this file is made by Kouyama based on Yokota's definition in Yokota et al 2011)  
 Note; Latitude direction (north to south) may be opposit to the SP model definition, sorry..  
 
-- 'High_albedo_sel.txt'  
-- 'Mid_albedo_sel.txt'  
-- 'Low_albedo_sel.txt'  
+- 'High_albedo_sel_expand.txt'  
+- 'Mid_albedo_sel_expand.txt'  
+- 'Low_albedo_sel_expand.txt'  
 ASCII files. Parameters of i, e, alpha dependence for each albedo group.  
 
 - 'Gueymard.txt' :: ASCII file
@@ -39,9 +39,9 @@ Solar irradiance data from Gueymard model which is used in generating SP model
 
 In IDL/GDL CUI
 
-IDL> .compile main_sp_model.pro
+IDL> .compile main_sp_model_expand.pro
 
-IDL> main_sp_model
+IDL> main_sp_model_expand
 
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
@@ -56,16 +56,16 @@ All required functions are contained in this repository, and will be compiled au
 
 $ gdl
 
-GDL> .compile main_sp_model.pro
+GDL> .compile main_sp_model_expand.pro
 
-GDL> main_sp_model
+GDL> main_sp_model_expand
 
 # Misc:
 
-**Structure of 'avg_cube_1000s-7000s_selected_ip110225.img'**
+**Structure of 'avgradf_spl2cv2_720_try6and7.img'**
 
 0.5x0.5 degree grid interval in longitude and latitude direction, and there are 160 channels in wavelength.
-i.e. (lon, lat, wavelength) = (720, 360, 160)
+i.e. (lon, lat, wavelength) = (720, 360, 204)
 
   ;; Note: Definition of SP map coordinate  (Lon, Lat)  
   ;; (0.25, 89.75), (0.75, 89.75), ... (359.75,89.75) ;; North pole  
