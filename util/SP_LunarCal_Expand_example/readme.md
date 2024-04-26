@@ -1,4 +1,4 @@
-# Lunar calibration with SP model (Disk-resolved model), expand to 2050 nm
+# Lunar calibration with SP model (Disk-resolved model), expanding to 2050 nm
 
 This is an official implementation (IDL) of a paper:
 
