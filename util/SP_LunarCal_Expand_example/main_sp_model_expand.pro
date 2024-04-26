@@ -108,10 +108,13 @@ pro main_SP_model_expand
 
   ;; for GDL interface
   ofname_csv = outdir+'Lunar_irradiance.csv'
+  out_siz = size(out_irad)
+  n_bands = out_siz[1]
+
   openw,1,ofname_csv
   printf,1,'Wavelength, Lunar_irradiance (W/m2/um)'
 
-  for i=0, 160-1, 1 do begin
+  for i=0, n_bands-1, 1 do begin
      tmp_l = string(double(out_wav[i]))+','+string(double(out_irad[i]))
      ;;print,tmp_l ;; for debug
      printf,1,tmp_l

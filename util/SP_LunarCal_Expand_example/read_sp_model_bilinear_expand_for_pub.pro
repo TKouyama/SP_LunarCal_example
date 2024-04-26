@@ -90,6 +90,12 @@ pro read_sp_model_bilinear_expand_for_pub $
   xs = 800; 512*1.5
   ys = 800; 512*1.5
 
+  ;;
+  ;; number of bands
+  ;;
+  ;n_bands = 160l
+  n_bands = 204l
+
   ;; spatial resolution
   inst_name = 'ASTER'
   cam_info = get_cam_info_aster(inst_name=inst_name) ; or (inst_name='ASTER_BACK')
@@ -281,8 +287,8 @@ pro read_sp_model_bilinear_expand_for_pub $
   ;; Mean radiance
   ;;
   ccd_siz = size(ccd_rad)
-  mean_r = dblarr(160)
-  for mean_i=0, 160-1, 1 do begin
+  mean_r = dblarr(n_bands)
+  for mean_i=0, n_bands-1, 1 do begin
     tmp_ccd = ccd_rad[*,*,mean_i]
     mean_r[mean_i] = mean(tmp_ccd[where(tmp_ccd gt 0)])
   endfor
