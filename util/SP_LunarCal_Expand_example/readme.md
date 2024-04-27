@@ -87,9 +87,9 @@ https://github.com/gnudatalanguage/gdl
 # Citations:
 - Yokota et al., 2011: [Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215](https://www.sciencedirect.com/science/article/abs/pii/S0019103511003009), 639-660
 
-- Ogohara et al., 2012: Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data, Icarus, 217, 661-668
+- Ogohara et al., 2012: [Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data](https://www.sciencedirect.com/science/article/abs/pii/S0019103511001904), Icarus, 217, 661-668
 
-- Kouyama et al., 2016: Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors, Planet. Space Sci., 124, 76-83
+- Kouyama et al., 2016: [Development of an application scheme for the SELENE/SP lunar reflectance model for radiometric calibration of hyperspectral and multispectral sensors](https://www.sciencedirect.com/science/article/abs/pii/S0032063315301008), Planet. Space Sci., 124, 76-83
 
 # Contact
 Toru Kouyama (AIST), 2019.04.29, modified 2020.10.12, 11.16, 2023.08.16, 2024.04.26
