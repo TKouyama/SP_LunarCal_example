@@ -85,7 +85,7 @@ i.e. (lon, lat, wavelength) = (720, 360, 204)
 https://github.com/gnudatalanguage/gdl
 
 # Citations:
-- Yokota et al., 2011: Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215, 639-660
+- Yokota et al., 2011: [Lunar photometric properties at wavelengths 0.5-1.6μm acquired by SELENE Spectral Profiler and their dependency on local albedo and latitudinal zones, Icarus, 215](https://www.sciencedirect.com/science/article/abs/pii/S0019103511003009), 639-660
 
 - Ogohara et al., 2012: Automated cloud tracking system for the Akatsuki Venus Climate Orbiter data, Icarus, 217, 661-668
 
