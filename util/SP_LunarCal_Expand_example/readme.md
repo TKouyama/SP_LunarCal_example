@@ -46,7 +46,7 @@ IDL> main_sp_model_expand
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
 
-If you have "astron library", you can add geometry output option
+If you have "[astron library](https://github.com/wlandsman/IDLAstro)", you can add geometry output option
 
 IDL> main_sp_model_expand, /geometry_ouput
 
