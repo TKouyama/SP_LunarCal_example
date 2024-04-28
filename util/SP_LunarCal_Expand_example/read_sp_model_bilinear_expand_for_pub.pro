@@ -16,7 +16,7 @@
 
 
 pro read_sp_model_bilinear_expand_for_pub $
-    ,obs_geo, out_wav, out_hyper_image, out_irad, datadir = datadir
+    ,obs_geo, out_wav, out_hyper_image, out_irad, out_ccd_geo, datadir = datadir
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;; Geometry情報を更新したいとき ;;
@@ -335,6 +335,8 @@ pro read_sp_model_bilinear_expand_for_pub $
   out_wav = wav
   ;; simulated 2D image (hyperspectral)
   out_hyper_image = ccd_rad
+  
+  out_ccd_geo = ccd_geo
 
   return
 end

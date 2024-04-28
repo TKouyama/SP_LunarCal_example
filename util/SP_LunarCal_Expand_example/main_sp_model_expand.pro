@@ -18,8 +18,9 @@
 
 ;;
 ;; main
+;; if you have "astron" library, you can set an option "geometroy_output" to save corresponding geometry information
 ;;
-pro main_SP_model_expand
+pro main_SP_model_expand,geometry_output=geometry_output
   ;;
   ;; Directory names for input parameter files and outputs
   ;;
@@ -98,7 +99,7 @@ pro main_SP_model_expand
   ;; Run simulation
   ;;
   read_sp_model_bilinear_expand_for_pub,obs_geo $
-        , out_wav, out_hyper_image, out_irad, datadir = datadir
+        , out_wav, out_hyper_image, out_irad, out_ccd_geo, datadir = datadir
 
   ;;
   ;; output disk integrated irradiance ;;
@@ -182,6 +183,21 @@ pro main_SP_model_expand
   tmp_image = out_hyper_image[*,*,40]
   byte_tmp_image = byte( tmp_image / (max(tmp_image) < 110) * 255d)
   write_jpeg,ofname_jpeg, byte_tmp_image
+
+  ;;
+  ;; Geometory fits形式にする?
+  ;; writefits is required (in astron libraly)
+  ;;
+  if keyword_Set(geometry_output) then begin
+    out_geo_siz = size(out_ccd_geo)
+    tmp_out_ccd_geo = dblarr(out_geo_siz[1],out_geo_siz[2],out_geo_siz[3]+1)
+    tmp_out_ccd_geo[*,*,0:out_geo_siz[3]-1] = out_ccd_geo
+    tmp_out_ccd_geo[*,*,out_geo_siz[3]] = tmp_image
+    out_ccd_geo = tmp_out_ccd_geo
+    
+    ofname_geo = outdir + ofname_base + '_geo.fits'
+    writefits,ofname_geo, out_ccd_geo
+  endif  
 
   return
 end
