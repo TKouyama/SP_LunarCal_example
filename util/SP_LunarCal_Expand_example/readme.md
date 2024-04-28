@@ -46,11 +46,19 @@ IDL> main_sp_model_expand
 All required functions are contained in this repository, and will be compiled automatically at compiling main_sp_model.pro.
 (But if you find missed function(s), please inform me)
 
+If you have "astron library", you can add geometry output option
+
+IDL> main_sp_model_expand, /geometry_ouput
+
+
 **Outputs**
 
 - Hyperspectral Image cube (bin = raw binary)
 - Lunar irradiance spectrum (csv)
 - Calculation setting (txt)
+
+(optionally)
+- Geometry information: Longitue, Latitude, Incident angle, Emission angle, Phase angle, Distance to surface, surface brightness (fits)
 
 # GDL run example
 
