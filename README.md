@@ -22,7 +22,7 @@ Then copy this file to "parameters" directory.
 or run below command on your linux CLI
 
 
-wget https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/avg_cube_1000s-7000s_selected_ip110225.img -P ./parameters/
+`wget https://archive.jlpeda.isas.jaxa.jp/pub/product/moon-selene-sp/sp_cube_ver2011/avg_cube_1000s-7000s_selected_ip110225.img -P ./parameters/`
 
 **Comfirm paramtere files in this repository**
 
